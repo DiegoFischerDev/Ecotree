@@ -1,10 +1,28 @@
-'use-client'
+'use client'
+
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 import { FiUser, FiLock } from "react-icons/fi";
 
 export default function LoginForm() {
+
+  const router = useRouter();
+  const [user, setUser] = useState('');
+  const [password, setPassword] = useState('');
+
+
+  function handleLogin(e) {
+
+    e.preventDefault()
+
+    if( user !== '' && password !== ''){
+      router.push('/application');
+    }
+  }
+
   return (
-    <form className="border w-[90%] my-10 rounded flex flex-col items-center">
+    <form onSubmit={(e) => { handleLogin(e) }} className="border w-[90%] my-10 rounded flex flex-col items-center">
       <div className="w-full bg-slate-300 text-gray-500 p-2">
         <p className="text-sm">Faça seu login</p>
       </div>
@@ -12,15 +30,33 @@ export default function LoginForm() {
 
       <div className="mt-8 w-[90%] rounded text-lg flex items-center relative">
         <FiUser color="gray" className="absolute left-3" />
-        <input type="text" className="w-[100%] bg-[#e5f0fc] rounded p-2 text-lg pl-10" placeholder="Usuário"></input>
+
+        <input
+        value={user}
+        onChange={(e)=>{setUser(e.target.value)}}
+        required
+        type="text"
+        className="w-[100%] bg-[#e5f0fc] rounded p-2 text-lg pl-10"
+        placeholder="Usuário"/>
       </div>
 
       <div className="mt-2 w-[90%] rounded text-lg flex items-center relative">
         <FiLock color="gray" className="absolute left-3" />
-        <input type="password" className="w-[100%] bg-[#e5f0fc] rounded p-2 text-lg pl-10" placeholder="Senha"></input>
+
+        <input
+        value={password}
+        onChange={(e)=>{setPassword(e.target.value)}}
+        required
+        type="password"
+        className="w-[100%] bg-[#e5f0fc] rounded p-2 text-lg pl-10"
+        placeholder="Senha" />
       </div>
 
-      <button className="my-10 text-lg shadow px-5 py-2 rounded border">ENTRAR</button>
+      <input
+      type="submit"
+      className="my-10 text-lg shadow px-5 py-2 rounded border cursor-pointer"
+      value="Entrar"
+      />
 
       <div className="w-[90%] mb-5 flex justify-between text-gray-500">
         <a className="flex items-center cursor-pointer">
