@@ -42,7 +42,7 @@ export default function Clientes() {
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Categoria</h4>
-            {ListaDeClientes.map((orçamento) => <select onChange={() => { setItemModificado(orçamento.id) }} className={`w-[130px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
+            {ListaDeClientes.map((orçamento) => <select key={orçamento.id} onChange={() => { setItemModificado(orçamento.id) }} className={`w-[130px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
               <option value="volvo">Reforma</option>
               <option value="saab">Pintura</option>
               <option value="opel">Obra</option>
@@ -52,7 +52,7 @@ export default function Clientes() {
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Forma de Pgmt</h4>
-            {ListaDeClientes.map((orçamento) => <select onChange={() => { setItemModificado(orçamento.id) }} className={`w-[130px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
+            {ListaDeClientes.map((orçamento) => <select key={orçamento.id} onChange={() => { setItemModificado(orçamento.id) }} className={`w-[130px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
               <option value="volvo">Dinheiro</option>
               <option value="saab">Multibanco</option>
               <option value="opel">MB-Way</option>
@@ -62,19 +62,19 @@ export default function Clientes() {
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center w-[160px] text-gray-600">Data da Emissão</h4>
-            {ListaDeClientes.map((orçamento) => <input type="date" onChange={() => { setItemModificado(orçamento.id) }} key={orçamento.id} className={`w-[160px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}></input>)}
+            {ListaDeClientes.map((orçamento) => <input key={orçamento.id} type="date" onChange={() => { setItemModificado(orçamento.id) }} key={orçamento.id} className={`w-[160px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}></input>)}
           </div>
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center w-[150px] text-gray-600">Data do Pgmt</h4>
-            {ListaDeClientes.map((orçamento) => <input type="date" onChange={() => { setItemModificado(orçamento.id) }} key={orçamento.id} className={`w-[160px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}></input>)}
+            {ListaDeClientes.map((orçamento) => <input key={orçamento.id} type="date" onChange={() => { setItemModificado(orçamento.id) }} key={orçamento.id} className={`w-[160px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}></input>)}
           </div>
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Valor €</h4>
             {ListaDeClientes.map((orçamento) =>
-              <div className={`flex items-center mt-3 ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}>
-                <input type="number" onChange={() => { setItemModificado(orçamento.id) }} key={orçamento.id} placeholder={orçamento.valor} className={`w-[80px] h-10 flex items-center ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>
+              <div key={orçamento.id} className={`flex items-center mt-3 ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}>
+                <input type="number" onChange={() => { setItemModificado(orçamento.id) }} placeholder={orçamento.valor} className={`w-[80px] h-10 flex items-center ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>
                 €
               </div>
             )}
