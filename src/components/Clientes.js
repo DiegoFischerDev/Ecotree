@@ -43,20 +43,20 @@ export default function Clientes() {
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Categoria</h4>
             {ListaDeClientes.map((orçamento) => <select key={orçamento.id} onChange={() => { setItemModificado(orçamento.id) }} className={`w-[130px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
-              <option value="volvo">Reforma</option>
-              <option value="saab">Pintura</option>
-              <option value="opel">Obra</option>
-              <option value="audi">Outras</option>
+              <option value="Reforma">Reforma</option>
+              <option value="Pintura">Pintura</option>
+              <option value="Obra">Obra</option>
+              <option value="Outras">Outras</option>
             </select>)}
           </div>
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Forma de Pgmt</h4>
             {ListaDeClientes.map((orçamento) => <select key={orçamento.id} onChange={() => { setItemModificado(orçamento.id) }} className={`w-[130px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
-              <option value="volvo">Dinheiro</option>
-              <option value="saab">Multibanco</option>
-              <option value="opel">MB-Way</option>
-              <option value="audi">Outras</option>
+              <option value="Reforma">Dinheiro</option>
+              <option value="Pintura">Multibanco</option>
+              <option value="Obra">MB-Way</option>
+              <option value="Outras">Outras</option>
             </select>)}
           </div>
 

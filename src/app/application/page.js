@@ -10,6 +10,7 @@ import { useState } from "react"
 import Dashboard from "@/components/Dashboard"
 import NovoOrçamento from "@/components/NovoOrçamento"
 import Clientes from "@/components/Clientes"
+import Materiais from "@/components/Materiais"
 
 export default function Application() {
 
@@ -42,7 +43,7 @@ export default function Application() {
             <MenuItem title="Dashboard" showSection={showSection} setShowSection={setShowSection} />
             <MenuItem title="Novo Orçamento" showSection={showSection} setShowSection={setShowSection} />
             <MenuItem title="Clientes" showSection={showSection} setShowSection={setShowSection} />
-            <MenuItem title="Itens" showSection={showSection} setShowSection={setShowSection} />
+            <MenuItem title="Materiais" showSection={showSection} setShowSection={setShowSection} />
             <MenuItem title="Mão de Obra" showSection={showSection} setShowSection={setShowSection} />
             <MenuItem title="Menu 6" showSection={showSection} setShowSection={setShowSection} />
             <MenuItem title="Menu 7" showSection={showSection} setShowSection={setShowSection} />
@@ -67,7 +68,7 @@ export default function Application() {
         {showSection === "Dashboard" && <Dashboard />}
         {showSection === "Novo Orçamento" && <NovoOrçamento />}
         {showSection === "Clientes" && <Clientes />}
-        {showSection === "Itens" && "Itens"}
+        {showSection === "Materiais" && <Materiais />}
         {showSection === "Mão de Obra" && "Mão de Obra"}
         {showSection === "Menu 6" && "Menu 6"}
         {showSection === "Menu 7" && "Menu 7"}
