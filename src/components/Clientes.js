@@ -62,12 +62,12 @@ export default function Clientes() {
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center w-[160px] text-gray-600">Data da Emissão</h4>
-            {ListaDeClientes.map((orçamento) => <input key={orçamento.id} type="date" onChange={() => { setItemModificado(orçamento.id) }} key={orçamento.id} className={`w-[160px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}></input>)}
+            {ListaDeClientes.map((orçamento) => <input key={orçamento.id} type="date" onChange={() => { setItemModificado(orçamento.id) }} className={`w-[160px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}></input>)}
           </div>
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center w-[150px] text-gray-600">Data do Pgmt</h4>
-            {ListaDeClientes.map((orçamento) => <input key={orçamento.id} type="date" onChange={() => { setItemModificado(orçamento.id) }} key={orçamento.id} className={`w-[160px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}></input>)}
+            {ListaDeClientes.map((orçamento) => <input key={orçamento.id} type="date" onChange={() => { setItemModificado(orçamento.id) }} className={`w-[160px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}></input>)}
           </div>
 
           <div className='mx-5 py-2 text-xl'>
