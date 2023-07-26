@@ -1,4 +1,4 @@
-const ListaDeClientes = [
+const ListaDeOrçamentos = [
   {
     id: 1,
     cliente: "TRHK Engenharia",
@@ -21,4 +21,4 @@ const ListaDeClientes = [
   },
 ]
 
-export default ListaDeClientes;
+export default ListaDeOrçamentos;

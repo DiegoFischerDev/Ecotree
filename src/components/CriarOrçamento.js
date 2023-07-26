@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FiZoomIn, FiTrash2, FiTruck, FiPrinter } from "react-icons/fi";
 
-export default function NovoOrçamento() {
+export default function CriarOrçamento() {
 
   const orçamentos = [
     {
@@ -32,7 +32,7 @@ export default function NovoOrçamento() {
 
   return (
     <div className='p-10'>
-      <h2 className='text-gray-500 border-b-4 font-semibold border-gray-400'>Novo Orçamento</h2>
+      <h2 className='text-gray-500 border-b-4 font-semibold border-gray-400'>Criar Orçamento</h2>
 
       <div className='rounded border mt-10'>
 
