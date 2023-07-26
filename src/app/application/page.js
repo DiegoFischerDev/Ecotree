@@ -8,8 +8,10 @@ import { FiUser, FiLock } from "react-icons/fi";
 import MenuItem from "@/components/MenuItem";
 import { useState } from "react"
 import Dashboard from "@/components/Dashboard"
-import NovoOrçamento from "@/components/NovoOrçamento"
-import Clientes from "@/components/Clientes"
+import CriarOrçamento from "@/components/CriarOrçamento"
+import Orçamentos from "@/components/Orçamentos"
+import Materiais from "@/components/Materiais"
+import MaoDeObra from "@/components/MãoDeObra"
 
 export default function Application() {
 
@@ -40,9 +42,9 @@ export default function Application() {
 
           <ul className="mt-12">
             <MenuItem title="Dashboard" showSection={showSection} setShowSection={setShowSection} />
-            <MenuItem title="Novo Orçamento" showSection={showSection} setShowSection={setShowSection} />
-            <MenuItem title="Clientes" showSection={showSection} setShowSection={setShowSection} />
-            <MenuItem title="Itens" showSection={showSection} setShowSection={setShowSection} />
+            <MenuItem title="Criar Orçamento" showSection={showSection} setShowSection={setShowSection} />
+            <MenuItem title="Orçamentos" showSection={showSection} setShowSection={setShowSection} />
+            <MenuItem title="Materiais" showSection={showSection} setShowSection={setShowSection} />
             <MenuItem title="Mão de Obra" showSection={showSection} setShowSection={setShowSection} />
             <MenuItem title="Menu 6" showSection={showSection} setShowSection={setShowSection} />
             <MenuItem title="Menu 7" showSection={showSection} setShowSection={setShowSection} />
@@ -65,10 +67,10 @@ export default function Application() {
 
       <div className="">
         {showSection === "Dashboard" && <Dashboard />}
-        {showSection === "Novo Orçamento" && <NovoOrçamento />}
-        {showSection === "Clientes" && <Clientes />}
-        {showSection === "Itens" && "Itens"}
-        {showSection === "Mão de Obra" && "Mão de Obra"}
+        {showSection === "Criar Orçamento" && <CriarOrçamento />}
+        {showSection === "Orçamentos" && <Orçamentos />}
+        {showSection === "Materiais" && <Materiais />}
+        {showSection === "Mão de Obra" && <MaoDeObra />}
         {showSection === "Menu 6" && "Menu 6"}
         {showSection === "Menu 7" && "Menu 7"}
       </div>
