@@ -64,7 +64,7 @@ export default function NovoOrçamento() {
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Categoria</h4>
-            {orçamentos.map((orçamento) => <select onChange={() => { setItemModificado(orçamento.id) }} className={`w-[130px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
+            {orçamentos.map((orçamento) => <select key={orçamento.id} onChange={() => { setItemModificado(orçamento.id) }} className={`w-[130px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
               <option value="volvo">Reforma</option>
               <option value="saab">Pintura</option>
               <option value="opel">Obra</option>
@@ -74,7 +74,7 @@ export default function NovoOrçamento() {
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Forma de Pgmt</h4>
-            {orçamentos.map((orçamento) => <select onChange={() => { setItemModificado(orçamento.id) }} className={`w-[130px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
+            {orçamentos.map((orçamento) => <select key={orçamento.id} onChange={() => { setItemModificado(orçamento.id) }} className={`w-[130px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
               <option value="volvo">Dinheiro</option>
               <option value="saab">Multibanco</option>
               <option value="opel">MB-Way</option>
@@ -95,8 +95,8 @@ export default function NovoOrçamento() {
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Valor €</h4>
             {orçamentos.map((orçamento) =>
-              <div className={`flex items-center mt-3 ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}>
-                <input type="number" onChange={() => { setItemModificado(orçamento.id) }} key={orçamento.id} placeholder={orçamento.valor} className={`w-[80px] h-10 flex items-center ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>
+              <div key={orçamento.id} className={`flex items-center mt-3 ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}>
+                <input type="number" onChange={() => { setItemModificado(orçamento.id) }} placeholder={orçamento.valor} className={`w-[80px] h-10 flex items-center ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>
                 €
               </div>
             )}
