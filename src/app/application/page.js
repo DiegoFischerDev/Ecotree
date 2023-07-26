@@ -1,9 +1,78 @@
+'use client'
 
+import Image from "next/image"
+import logo from "../../assets/logo-ecotree.png"
+import userAdmin from "../../assets/user-admin.png"
+import LogoutButton from "@/components/Logout-Button"
+import { FiUser, FiLock } from "react-icons/fi";
+import MenuItem from "@/components/MenuItem";
+import { useState } from "react"
+import Dashboard from "@/components/Dashboard"
+import NovoOrçamento from "@/components/NovoOrçamento"
+import Clientes from "@/components/Clientes"
 
 export default function Application() {
+
+  const [showSection, setShowSection] = useState('Dashboard');
+
   return (
-    <section className="flex items-center justify-center h-[100vh] text-2xl">
-      EcoTree | Application
+    <section className="flex text-2xl">
+
+      <div className="min-w-[200px]"></div>
+
+      <div className="fixed left-0 top-0 bg-slate-500 flex flex-col items-center w-[200px] h-[100vh] justify-between">
+        <div className="flex items-center flex-col justify-center">
+
+          <div className="flex items-center flex-col w-[100%] justify-center mt-10">
+            <Image
+              src={userAdmin}
+              alt='Engineering logo'
+              width={500}
+              height={500}
+              className='w-12 rounded-[100%] border-2'
+              priority={true}
+            />
+
+            <h2 className="text-white text-sm">Administrador</h2>
+            <h2 className="text-white text-sm">admin@ecotree.pt</h2>
+            <LogoutButton />
+          </div>
+
+          <ul className="mt-12">
+            <MenuItem title="Dashboard" showSection={showSection} setShowSection={setShowSection} />
+            <MenuItem title="Novo Orçamento" showSection={showSection} setShowSection={setShowSection} />
+            <MenuItem title="Clientes" showSection={showSection} setShowSection={setShowSection} />
+            <MenuItem title="Itens" showSection={showSection} setShowSection={setShowSection} />
+            <MenuItem title="Mão de Obra" showSection={showSection} setShowSection={setShowSection} />
+            <MenuItem title="Menu 6" showSection={showSection} setShowSection={setShowSection} />
+            <MenuItem title="Menu 7" showSection={showSection} setShowSection={setShowSection} />
+          </ul>
+        </div>
+
+        <div className="text-xs text-gray-400 p-5 relative flex justify-center flex-col items-center">
+          <Image
+            src={logo}
+            alt='Engineering logo'
+            width={500}
+            height={500}
+            className='w-[140px]'
+            priority={true}
+          />
+          <h2 className="absolute top-28 left-[58px] bg-slate-500 text-lg text-white">Ecotree</h2>
+          <span>Versão 1.0</span><span>Ecotree &copy; 2023</span>
+        </div>
+      </div>
+
+      <div className="">
+        {showSection === "Dashboard" && <Dashboard />}
+        {showSection === "Novo Orçamento" && <NovoOrçamento />}
+        {showSection === "Clientes" && <Clientes />}
+        {showSection === "Itens" && "Itens"}
+        {showSection === "Mão de Obra" && "Mão de Obra"}
+        {showSection === "Menu 6" && "Menu 6"}
+        {showSection === "Menu 7" && "Menu 7"}
+      </div>
+
     </section>
   )
 }
