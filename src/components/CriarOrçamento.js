@@ -1,115 +1,54 @@
 'use client'
 
 import { useState } from "react";
-import { FiZoomIn, FiTrash2, FiTruck, FiPrinter } from "react-icons/fi";
+import { FiTrash2, FiTruck, FiPrinter } from "react-icons/fi";
+import SelectComponent from "./SelectComponent";
+import ListaDeCategorias from "@/api/ListaDeCategorias";
+import TabelaMaoDeObra from "./TabelaMaoDeObra";
 
 export default function CriarOrçamento() {
 
-  const orçamentos = [
-    {
-      id: 1,
-      cliente: "TRHK Engenharia",
-      valor: 800
-    },
-    {
-      id: 2,
-      cliente: "Compesa S.A.",
-      valor: 300
-    },
-    {
-      id: 3,
-      cliente: "Rodrigues Oliveira",
-      valor: 1200
-    },
-    {
-      id: 4,
-      cliente: "ANJE",
-      valor: 3500
-    },
-  ]
-
-  const [itemModificado, setItemModificado] = useState(0);
+  const [categoria, setCategoria] = useState('')
+  const [listeningMouseClick, setListeningMouseClick] = useState(false)
+  const [dataDoOrçamento, setDataDoOrçamento] = useState('')
 
   return (
-    <div className='p-10'>
+    <div className='p-10 min-w-[80vw] pb-[500px]' onClick={() => { if (listeningMouseClick) { setListeningMouseClick(false) } }}>
+
       <h2 className='text-gray-500 border-b-4 font-semibold border-gray-400'>Criar Orçamento</h2>
 
-      <div className='rounded border mt-10'>
+      <form className="flex flex-col">
 
-        <div className='bg-gray-200 p-2 px-4'>
-          <h3 className='text-gray-500'>Listagem dos Itens</h3>
+        <div className="flex mt-10">
+          <div className="flex flex-col">
+            <label className="text-sm text-gray-600">Nome Do Cliente</label>
+            <input type="text" placeholder="Nome Do Cliente" className="border p-2 text-lg w-[400px] text-green-400" />
+          </div>
+
+          <div className="flex flex-col ml-12">
+            <label className="text-sm text-gray-600">NIF</label>
+            <input type="number" placeholder="NIF" className="border p-2 text-lg w-[200px] text-green-400" />
+          </div>
+
+          <div className='flex flex-col ml-12'>
+            <label className="text-sm text-gray-600">Categoria</label>
+            <SelectComponent options={ListaDeCategorias} placeholder="Categoria" value={categoria} setValue={setCategoria} listeningMouseClick={listeningMouseClick} setListeningMouseClick={setListeningMouseClick} className="text-green-400" />
+          </div>
+
+          <div className="flex flex-col ml-12">
+            <label className="text-sm text-gray-600">Data do Orçamento</label>
+            <input type="date" className={`border p-[6.5px] text-lg w-[200px] ${dataDoOrçamento ? "text-green-400" : "text-gray-400"}`} onChange={(e) => { setDataDoOrçamento(e.target.value) }} />
+          </div>
         </div>
 
-        <div className='flex'>
-          <div className='mx-5 ml-4 py-2 text-xl'>
-            <h4 className="h-10"></h4>
-            {orçamentos.map((orçamento) =>
-              <div key={orçamento.id} className="flex w-32 justify-between py-4 h-10 items-center mt-3">
-                <a className="cursor-pointer"><FiZoomIn color="purple" /></a>
-                <a className="cursor-pointer"><FiPrinter color="blue" /></a>
-                <a className="cursor-pointer"><FiTruck color="green" /></a>
-                <a className="cursor-pointer"><FiTrash2 color="red" /></a>
-              </div>)}
-          </div>
-
-          <div className='mx-5 p-2 text-xl'>
-            <h4 className="h-10 flex items-center justify-center">id</h4>
-            {orçamentos.map((orçamento) => <h4 key={orçamento.id} className="h-10 text-gray-400 mt-3 flex items-center justify-center">{orçamento.id}</h4>)}
-          </div>
-
-          <div className='mx-5 py-2 text-xl'>
-            <h4 className="h-10 flex items-center text-gray-600">Cliente</h4>
-            {orçamentos.map((orçamento) => <input type="text" onChange={(e) => { setItemModificado(orçamento.id) }} key={orçamento.id} placeholder={orçamento.cliente} className={`w-[180px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>)}
-          </div>
-
-          <div className='mx-5 py-2 text-xl'>
-            <h4 className="h-10 flex items-center text-gray-600">Categoria</h4>
-            {orçamentos.map((orçamento) => <select key={orçamento.id} onChange={() => { setItemModificado(orçamento.id) }} className={`w-[130px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
-              <option value="volvo">Reforma</option>
-              <option value="saab">Pintura</option>
-              <option value="opel">Obra</option>
-              <option value="audi">Outras</option>
-            </select>)}
-          </div>
-
-          <div className='mx-5 py-2 text-xl'>
-            <h4 className="h-10 flex items-center text-gray-600">Forma de Pgmt</h4>
-            {orçamentos.map((orçamento) => <select key={orçamento.id} onChange={() => { setItemModificado(orçamento.id) }} className={`w-[130px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
-              <option value="volvo">Dinheiro</option>
-              <option value="saab">Multibanco</option>
-              <option value="opel">MB-Way</option>
-              <option value="audi">Outras</option>
-            </select>)}
-          </div>
-
-          <div className='mx-5 py-2 text-xl'>
-            <h4 className="h-10 flex items-center w-[160px] text-gray-600">Data da Emissão</h4>
-            {orçamentos.map((orçamento) => <input type="date" onChange={() => { setItemModificado(orçamento.id) }} key={orçamento.id} className={`w-[140px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}></input>)}
-          </div>
-
-          <div className='mx-5 py-2 text-xl'>
-            <h4 className="h-10 flex items-center w-[150px] text-gray-600">Data do Pgmt</h4>
-            {orçamentos.map((orçamento) => <input type="date" onChange={() => { setItemModificado(orçamento.id) }} key={orçamento.id} className={`w-[140px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}></input>)}
-          </div>
-
-          <div className='mx-5 py-2 text-xl'>
-            <h4 className="h-10 flex items-center text-gray-600">Valor €</h4>
-            {orçamentos.map((orçamento) =>
-              <div key={orçamento.id} className={`flex items-center mt-3 ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}>
-                <input type="number" onChange={() => { setItemModificado(orçamento.id) }} placeholder={orçamento.valor} className={`w-[80px] h-10 flex items-center ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>
-                €
-              </div>
-            )}
-          </div>
-
-          <div className='mx-5 py-2 text-xl'>
-            <h4 className="h-10 flex items-center text-gray-600"></h4>
-            {orçamentos.map((orçamento) => <button onClick={() => { setItemModificado(0) }} key={orçamento.id} className={`w-[100px] ${orçamento.id === itemModificado ? "bg-green-400" : "bg-gray-400"} h-10 mt-3 flex items-center justify-center text-white rounded`}>Salvar</button>)}
-          </div>
-
+        <div className="flex flex-col mt-10">
+          <label className="text-sm text-gray-600">Descrição do Projeto</label>
+          <textarea type="number" placeholder="Breve Descrição do Projeto" className="border p-2 text-lg h-[200px] text-green-400" />
         </div>
 
-      </div>
+        <TabelaMaoDeObra listeningMouseClick={listeningMouseClick} setListeningMouseClick={setListeningMouseClick} />
+
+      </form>
     </div>
   );
 }

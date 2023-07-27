@@ -9,7 +9,7 @@ export default function Materiais() {
   const [itemModificado, setItemModificado] = useState(0);
 
   return (
-    <div className='p-10'>
+    <div className='p-10 min-w-[80vw]'>
       <h2 className='text-gray-500 border-b-4 font-semibold border-gray-400'>Materiais</h2>
 
       <div className="relative mt-10">

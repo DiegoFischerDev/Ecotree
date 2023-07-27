@@ -22,7 +22,7 @@ export default function Application() {
 
       <div className="min-w-[200px]"></div>
 
-      <div className="fixed left-0 top-0 bg-slate-500 flex flex-col items-center w-[200px] h-[100vh] justify-between">
+      <div className="fixed left-0 top-0 z-50 bg-slate-500 flex flex-col items-center w-[200px] h-[100vh] justify-between">
         <div className="flex items-center flex-col justify-center">
 
           <div className="flex items-center flex-col w-[100%] justify-center mt-10">
