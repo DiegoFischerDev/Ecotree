@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ListaDeMaoDeObra from "../api/ListaDeMaoDeObra"
-import { FiZoomIn, FiTrash2, FiPrinter } from "react-icons/fi";
+import { FiZoomIn, FiTrash2, FiSearch } from "react-icons/fi";
 
 export default function MaoDeObra() {
 
@@ -11,6 +11,11 @@ export default function MaoDeObra() {
   return (
     <div className='p-10'>
       <h2 className='text-gray-500 border-b-4 font-semibold border-gray-400'>Mão de Obra</h2>
+
+      <div className="relative mt-10">
+        <FiSearch color="gray" className="absolute top-[10px] left-[10px]"/>
+        <input type="text" placeholder="Buscar Profissional" className="bg-zinc-100 border p-2 pl-12 text-lg text-gray-600"></input>
+      </div>
 
       <div className='rounded border mt-10'>
 
@@ -22,9 +27,8 @@ export default function MaoDeObra() {
           <div className='mx-5 ml-4 py-2 text-xl'>
             <h4 className="h-10"></h4>
             {ListaDeMaoDeObra.map((orçamento) =>
-              <div key={orçamento.id} className="flex w-28 justify-between py-4 h-10 items-center mt-3">
+              <div key={orçamento.id} className="flex w-16 justify-between py-4 h-10 items-center mt-3">
                 <a className="cursor-pointer"><FiZoomIn color="purple" /></a>
-                <a className="cursor-pointer"><FiPrinter color="blue" /></a>
                 <a className="cursor-pointer"><FiTrash2 color="red" /></a>
               </div>)}
           </div>
