@@ -9,7 +9,7 @@ export default function MaoDeObra() {
   const [itemModificado, setItemModificado] = useState(0);
 
   return (
-    <div className='p-10'>
+    <div className='p-10 min-w-[80vw]'>
       <h2 className='text-gray-500 border-b-4 font-semibold border-gray-400'>Mão de Obra</h2>
 
       <div className="relative mt-10">
@@ -65,7 +65,7 @@ export default function MaoDeObra() {
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600"></h4>
-            {ListaDeMaoDeObra.map((orçamento) => <button onClick={() => { setItemModificado(0) }} key={orçamento.id} className={`w-[100px] ${orçamento.id === itemModificado ? "bg-green-400" : "bg-gray-400"} h-10 mt-3 flex items-center justify-center text-white rounded`}>Salvar</button>)}
+            {ListaDeMaoDeObra.map((orçamento) => <button onClick={() => { setItemModificado(0) }} key={orçamento.id} className={`w-[100px]  ${orçamento.id === itemModificado ? "bg-green-400" : "bg-gray-400"} h-10 mt-3 flex items-center justify-center text-white rounded`}>Salvar</button>)}
           </div>
 
         </div>
