@@ -29,7 +29,7 @@ export default function Orçamentos() {
             {ListaDeOrçamentos.map((orçamento) =>
               <div key={orçamento.id} className="flex w-32 justify-between py-4 h-10 items-center mt-3">
                 <a className="cursor-pointer"><FiZoomIn color="purple" /></a>
-                <a className="cursor-pointer"><FiPrinter color="blue" /></a>
+                <a href="/orçamentoMock.pdf" target={"_blank"} download={false} ><FiPrinter color="blue" /></a>
                 <a className="cursor-pointer"><FiTrash2 color="red" /></a>
               </div>)}
           </div>

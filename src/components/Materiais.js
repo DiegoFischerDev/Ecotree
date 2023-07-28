@@ -13,7 +13,7 @@ export default function Materiais() {
       <h2 className='text-gray-500 border-b-4 font-semibold border-gray-400'>Materiais</h2>
 
       <div className="relative mt-10">
-        <FiSearch color="gray" className="absolute top-[10px] left-[10px]"/>
+        <FiSearch color="gray" className="absolute top-[10px] left-[10px]" />
         <input type="text" placeholder="Buscar Material" className="bg-zinc-100 border p-2 pl-12 text-lg text-gray-600"></input>
       </div>
 
@@ -45,7 +45,8 @@ export default function Materiais() {
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Unid</h4>
-            {ListaDeMateriais.map((orçamento) => <select key={orçamento.id} onChange={() => { setItemModificado(orçamento.id) }} className={`w-[100px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
+            {ListaDeMateriais.map((orçamento) => <select key={orçamento.id} placeholder={orçamento.unid} onChange={() => { setItemModificado(orçamento.id) }} className={`w-[150px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
+              <option value={orçamento.unid}>{orçamento.unid}</option>
               <option value="m">m</option>
               <option value="m²">m²</option>
               <option value="m³">m³</option>
