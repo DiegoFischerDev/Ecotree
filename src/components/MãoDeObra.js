@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ListaDeMaoDeObra from "../api/ListaDeMaoDeObra"
 import { FiZoomIn, FiTrash2, FiSearch } from "react-icons/fi";
 
 export default function MaoDeObra() {
 
+  const [listeningMouseClick, setListeningMouseClick] = useState(false)
   const [itemModificado, setItemModificado] = useState(0);
 
   return (
@@ -13,7 +14,7 @@ export default function MaoDeObra() {
       <h2 className='text-gray-500 border-b-4 font-semibold border-gray-400'>Mão de Obra</h2>
 
       <div className="relative mt-10">
-        <FiSearch color="gray" className="absolute top-[10px] left-[10px]"/>
+        <FiSearch color="gray" className="absolute top-[10px] left-[10px]" />
         <input type="text" placeholder="Buscar Profissional" className="bg-zinc-100 border p-2 pl-12 text-lg text-gray-600"></input>
       </div>
 
@@ -45,7 +46,8 @@ export default function MaoDeObra() {
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Unid</h4>
-            {ListaDeMaoDeObra.map((orçamento) => <select key={orçamento.id} onChange={() => { setItemModificado(orçamento.id) }} className={`w-[100px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
+            {ListaDeMaoDeObra.map((orçamento) => <select key={orçamento.id} placeholder={orçamento.unid} onChange={() => { setItemModificado(orçamento.id) }} className={`w-[100px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
+              <option value={orçamento.unid}>{orçamento.unid}</option>
               <option value="hr">hr</option>
               <option value="dia">dia</option>
               <option value="mês">mês</option>
@@ -57,7 +59,7 @@ export default function MaoDeObra() {
             <h4 className="h-10 flex items-center text-gray-600">Preço Unid</h4>
             {ListaDeMaoDeObra.map((orçamento) =>
               <div key={orçamento.id} className={`flex items-center mt-3 ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}>
-                <input type="number" onChange={() => { setItemModificado(orçamento.id) }} placeholder={orçamento.valor} className={`w-[80px] h-10 flex items-center ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>
+                <input type="number" onChange={() => { setItemModificado(orçamento.id) }} placeholder={orçamento.preçounid} className={`w-[80px] h-10 flex items-center ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>
                 €
               </div>
             )}
