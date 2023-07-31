@@ -10,8 +10,8 @@ export default function TabelaMaoDeObra({ listeningMouseClick, setListeningMouse
   useEffect(() => {
     let listaDeProfissoes = []
     ListaDeMaoDeObra.map((profissional) => {
-      if (!listaDeProfissoes.includes(profissional.funçao))
-        listaDeProfissoes.push(profissional.funçao)
+      if (!listaDeProfissoes.includes(profissional.nome))
+        listaDeProfissoes.push(profissional.nome)
     })
     setListaDeProfissoes(listaDeProfissoes)
 
@@ -42,9 +42,9 @@ export default function TabelaMaoDeObra({ listeningMouseClick, setListeningMouse
       let novaLista = ListaDeMaoDeObraDoOrçamento
       novaLista.push({
         id: Math.floor(Math.random() * 1000),
-        funçao: novoProfissional,
+        nome: novoProfissional,
         unid: novoUnidade,
-        preçounid: novoPreço,
+        valor: novoPreço,
         quantidade: novoQuantidade,
         margem: novoMargem,
         valortotal: novoValorTotal,
@@ -72,9 +72,9 @@ export default function TabelaMaoDeObra({ listeningMouseClick, setListeningMouse
 
   function VerificaSeTemDados() {
     ListaDeMaoDeObra.map((profissional) => {
-      if (profissional.funçao === novoProfissional) {
+      if (profissional.nome === novoProfissional) {
         setNovoUnidade(profissional.unid)
-        setNovoPreço(profissional.preçounid)
+        setNovoPreço(profissional.valor)
         setNovoQuantidade(1)
         setNovoDescriçao(profissional.descriçao)
       }
@@ -101,7 +101,7 @@ export default function TabelaMaoDeObra({ listeningMouseClick, setListeningMouse
 
         <div className="flex px-14 py-2 text-lg text-gray-400 font-semibold bg-gray-100">
           <span className="w-4"></span>
-          <span className="w-[300px] flex justify-center">Funçao</span>
+          <span className="w-[300px] flex justify-center">Função</span>
           <span className="w-[100px] flex justify-center">Unid</span>
           <span className="w-[150px] flex justify-center">Preço Unid</span>
           <span className="w-[150px] flex justify-center">Quantidade</span>
@@ -113,9 +113,9 @@ export default function TabelaMaoDeObra({ listeningMouseClick, setListeningMouse
         {ListaDeMaoDeObraDoOrçamento.map((profissional, index) => {
           return <div key={profissional.id} className={`text-green-400 flex items-center px-14 py-2 text-lg  ${index % 2 !== 0 ? "bg-gray-100" : ""}`}>
             <FiTrash2 onClick={() => { handleDeleteMaoDeObra(profissional.id) }} className=" cursor-pointer" color="red" />
-            <span className="w-[300px] flex justify-center">{profissional.funçao}</span>
+            <span className="w-[300px] flex justify-center">{profissional.nome}</span>
             <span className="w-[100px] flex justify-center">{profissional.unid}</span>
-            <span className="w-[150px] flex justify-center">{profissional.preçounid} €</span>
+            <span className="w-[150px] flex justify-center">{profissional.valor} €</span>
             <span className="w-[150px] flex justify-center">{profissional.quantidade} {profissional.unid}</span>
             <span className="w-[150px] flex justify-center">{profissional.margem}%</span>
             <span className="w-[100px] flex justify-center">{profissional.valortotal} $</span>
@@ -128,7 +128,7 @@ export default function TabelaMaoDeObra({ listeningMouseClick, setListeningMouse
         <div className="flex items-center ml-[10px] mt-8">
           <button type="button" onClick={() => { handleAdicionarMaoDeObra() }} className="p-2 w-[70px] mb-3 ml-5 text-lg bg-green-400 h-10 mt-3 flex items-center justify-center text-white rounded">Add</button>
 
-          <SelectComponent options={listaDeProfissoes} placeholder="Funçao" value={novoProfissional} setValue={setNovoProfissional} listeningMouseClick={listeningMouseClick} setListeningMouseClick={setListeningMouseClick} className="text-green-400 ml-5 w-[230px]" />
+          <SelectComponent options={listaDeProfissoes} placeholder="nome" value={novoProfissional} setValue={setNovoProfissional} listeningMouseClick={listeningMouseClick} setListeningMouseClick={setListeningMouseClick} className="text-green-400 ml-5 w-[230px]" />
 
           <SelectComponent options={listaDeUnidades} placeholder="Unid" value={novoUnidade} setValue={setNovoUnidade} listeningMouseClick={listeningMouseClick} setListeningMouseClick={setListeningMouseClick} className="text-green-400 ml-3 w-[120px]" />
 

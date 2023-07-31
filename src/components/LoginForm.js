@@ -24,7 +24,7 @@ export default function LoginForm() {
   return (
     <form onSubmit={(e) => { handleLogin(e) }} className="border bg-white/80 w-[90%] my-10 rounded flex flex-col items-center">
       <div className="w-full bg-gray-600 p-2">
-        <p className="text-sm text-white">Faça seu login</p>
+        <p className="text-sm text-white">Login</p>
       </div>
 
 

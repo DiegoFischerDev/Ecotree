@@ -1,20 +1,97 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ListaDeMateriais from "../api/ListaDeMateriais"
-import { FiZoomIn, FiTrash2, FiSearch } from "react-icons/fi";
+import { FiZoomIn, FiTrash2, FiSearch, FiEdit } from "react-icons/fi";
+import InputFiltrarLista from "./InputFiltrarLista";
+import DeleteItem from "./DeleteItem";
+import ButtonSalvar from "./ButtonSalvar";
 
 export default function Materiais() {
 
-  const [itemModificado, setItemModificado] = useState(0);
+  const [itemModificado, setItemModificado] = useState(
+    {
+      id: 0,
+      nome: "Nome",
+      unid: "Unid",
+      valor: 0,
+      descrição: "",
+    });
+
+  const [listaOriginal, setListaOriginal] = useState(ListaDeMateriais)
+  const [lista, setLista] = useState(ListaDeMateriais)
+  const [isEditing, setIsEditing] = useState(null)
+
+  useEffect(() => {
+    setLista(listaOriginal)
+  }, [listaOriginal])
+
+
+  function handleAdicionarMaterial() {
+
+    if (isEditing === null) {
+
+      setIsEditing(0)
+
+      let NewMaterial = {
+        id: 0,
+        nome: "Nome",
+        unid: "Unid",
+        valor: 0,
+        descrição: "Descrição do item",
+      }
+
+      if (listaOriginal[0].id !== 0) {
+        let novaLista = [...listaOriginal];
+        novaLista.unshift(NewMaterial);
+        setListaOriginal(novaLista);
+      }
+    } else {
+      alert("Salve as alterações pendentes antes de iniciar outra.")
+    }
+  }
+
+  function handleEditNome(material, e) {
+    setIsEditing(material.id)
+    let NewMaterial = material
+    NewMaterial.nome = e.target.value
+    setItemModificado(NewMaterial)
+  }
+
+  function handleEditUnid(material, e) {
+    setIsEditing(material.id)
+    let NewMaterial = material
+    NewMaterial.unid = e.target.value
+    setItemModificado(NewMaterial)
+  }
+
+  function handleEditValor(material, e) {
+    setIsEditing(material.id)
+    let NewMaterial = material
+    NewMaterial.valor = e.target.value
+    setItemModificado(NewMaterial)
+  }
+
+  function handleEditDescriçao(material, e) {
+    setIsEditing(material.id)
+    let NewMaterial = material
+    NewMaterial.descrição = e.target.value
+    setItemModificado(NewMaterial)
+  }
 
   return (
     <div className='p-10 min-w-[80vw]'>
       <h2 className='text-gray-500 border-b-4 font-semibold border-gray-400'>Materiais</h2>
 
-      <div className="relative mt-10">
-        <FiSearch color="gray" className="absolute top-[10px] left-[10px]" />
-        <input type="text" placeholder="Buscar Material" className="bg-zinc-100 border p-2 pl-12 text-lg text-gray-600"></input>
+      <div className="flex items-center mt-10">
+        <InputFiltrarLista
+          listaOriginal={listaOriginal}
+          setLista={setLista}
+          Chave="nome"
+          PlaceHolder="Buscar Material"
+        />
+
+        <button onClick={handleAdicionarMaterial} className="p-2 px-4 mb-3 ml-5 text-lg bg-green-400 h-10 mt-3 flex items-center justify-center text-white rounded">Adicionar Material</button>
       </div>
 
       <div className='rounded border mt-10'>
@@ -26,27 +103,33 @@ export default function Materiais() {
         <div className='flex'>
           <div className='mx-5 ml-4 py-2 text-xl'>
             <h4 className="h-10"></h4>
-            {ListaDeMateriais.map((orçamento) =>
-              <div key={orçamento.id} className="flex w-16 justify-between py-4 h-10 items-center mt-3">
-                <a className="cursor-pointer"><FiZoomIn color="purple" /></a>
-                <a className="cursor-pointer"><FiTrash2 color="red" /></a>
+            {lista?.map((material) =>
+              <div key={material.id} className="flex w-8 justify-between py-4 h-10 items-center mt-3">
+                <DeleteItem
+                  id={material.id}
+                  list={listaOriginal}
+                  setList={setListaOriginal}
+                  setIsEditing={setIsEditing}
+                  isEditing={isEditing}
+                  setItemModificado={setItemModificado}
+                />
               </div>)}
           </div>
 
-          <div className='mx-5 p-2 text-xl'>
+          {/* <div className='mx-5 p-2 text-xl'>
             <h4 className="h-10 flex items-center justify-center">id</h4>
-            {ListaDeMateriais.map((orçamento) => <h4 key={orçamento.id} className="h-10 text-gray-400 mt-3 flex items-center justify-center">{orçamento.id}</h4>)}
-          </div>
+            {lista?.map((material) => <h4 key={material.id} className="h-10 text-gray-400 mt-3 flex items-center justify-center">{material.id}</h4>)}
+          </div> */}
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Nome</h4>
-            {ListaDeMateriais.map((orçamento) => <input type="text" onChange={(e) => { setItemModificado(orçamento.id) }} key={orçamento.id} placeholder={orçamento.nome} className={`w-[260px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>)}
+            {lista?.map((material) => <input disabled={isEditing === null || isEditing === material.id ? false : true} type="text" onChange={(e) => { handleEditNome(material, e) }} key={material.id} placeholder={material.nome} className={`w-[260px] h-10 mt-3 flex items-center  ${material.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>)}
           </div>
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Unid</h4>
-            {ListaDeMateriais.map((orçamento) => <select key={orçamento.id} placeholder={orçamento.unid} onChange={() => { setItemModificado(orçamento.id) }} className={`w-[150px] h-10 mt-3 flex items-center  ${orçamento.id === itemModificado ? "text-green-400" : "text-gray-400"}`}>
-              <option value={orçamento.unid}>{orçamento.unid}</option>
+            {lista?.map((material) => <select disabled={isEditing === null || isEditing === material.id ? false : true} key={material.id} placeholder={material.unid} onChange={(e) => { handleEditUnid(material, e) }} className={`w-[150px] h-10 mt-3 flex items-center  ${material.id === itemModificado.id ? "text-green-400" : "text-gray-400"}`}>
+              <option value={material.unid}>{material.unid}</option>
               <option value="m">m</option>
               <option value="m²">m²</option>
               <option value="m³">m³</option>
@@ -58,17 +141,33 @@ export default function Materiais() {
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Preço Unid</h4>
-            {ListaDeMateriais.map((orçamento) =>
-              <div key={orçamento.id} className={`flex items-center mt-3 ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}>
-                <input type="number" onChange={() => { setItemModificado(orçamento.id) }} placeholder={orçamento.valor} className={`w-[80px] h-10 flex items-center ${orçamento.id === itemModificado ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>
+            {lista?.map((material) =>
+              <div key={material.id} className={`flex items-center mt-3 ${material.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}>
+                <input disabled={isEditing === null || isEditing === material.id ? false : true} type="number" onChange={(e) => { handleEditValor(material, e) }} placeholder={material.valor} className={`w-[80px] h-10 flex items-center ${material.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>
                 €
               </div>
             )}
           </div>
 
           <div className='mx-5 py-2 text-xl'>
+            <h4 className="h-10 flex items-center text-gray-600">Descrição</h4>
+            {lista?.map((material) =>
+              <div key={material.id} className={`flex items-center mt-3 ${material.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}>
+                <textarea disabled={isEditing === null || isEditing === material.id ? false : true} type="text" onChange={(e) => { handleEditDescriçao(material, e) }} placeholder={material.descrição} className={`w-[400px] h-10 text-sm flex items-center ${material.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></textarea>
+              </div>
+            )}
+          </div>
+
+          <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600"></h4>
-            {ListaDeMateriais.map((orçamento) => <button onClick={() => { setItemModificado(0) }} key={orçamento.id} className={`w-[100px] ${orçamento.id === itemModificado ? "bg-green-400" : "bg-gray-400"} h-10 mt-3 flex items-center justify-center text-white rounded`}>Salvar</button>)}
+            {lista?.map((material) => <ButtonSalvar
+              key={material.id}
+              listaOriginal={listaOriginal}
+              setListaOriginal={setListaOriginal}
+              itemModificado={itemModificado}
+              setItemModificado={setItemModificado}
+              setIsEditing={setIsEditing}
+              item={material} />)}
           </div>
 
         </div>
