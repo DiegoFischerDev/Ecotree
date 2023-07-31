@@ -42,12 +42,11 @@ export default function Application() {
 
           <ul className="mt-12">
             <MenuItem title="Dashboard" showSection={showSection} setShowSection={setShowSection} />
-            <MenuItem title="Criar Orçamento" showSection={showSection} setShowSection={setShowSection} />
-            <MenuItem title="Orçamentos" showSection={showSection} setShowSection={setShowSection} />
+            <MenuItem title="Orçamentos" title2="Criar Orçamento" showSection={showSection} setShowSection={setShowSection} />
             <MenuItem title="Materiais" showSection={showSection} setShowSection={setShowSection} />
             <MenuItem title="Mão de Obra" showSection={showSection} setShowSection={setShowSection} />
-            <MenuItem title="Menu 6" showSection={showSection} setShowSection={setShowSection} />
-            <MenuItem title="Menu 7" showSection={showSection} setShowSection={setShowSection} />
+            {/* <MenuItem title="Menu 5" showSection={showSection} setShowSection={setShowSection} />
+            <MenuItem title="Menu 6" showSection={showSection} setShowSection={setShowSection} /> */}
           </ul>
         </div>
 
@@ -67,12 +66,12 @@ export default function Application() {
 
       <div className="">
         {showSection === "Dashboard" && <Dashboard />}
-        {showSection === "Criar Orçamento" && <CriarOrçamento />}
-        {showSection === "Orçamentos" && <Orçamentos />}
+        {showSection === "Criar Orçamento" && <CriarOrçamento setShowSection={setShowSection}/>}
+        {showSection === "Orçamentos" && <Orçamentos setShowSection={setShowSection}/>}
         {showSection === "Materiais" && <Materiais />}
         {showSection === "Mão de Obra" && <MaoDeObra />}
-        {showSection === "Menu 6" && "Menu 6"}
-        {showSection === "Menu 7" && "Menu 7"}
+        {/* {showSection === "Menu 5" && "Menu 5"}
+        {showSection === "Menu 6" && "Menu 6"} */}
       </div>
 
     </section>

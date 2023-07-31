@@ -20,7 +20,7 @@ export default function Login() {
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
       />
 
-      {!showLogin && <div className="bg-white/60 p-10 rounded flex flex-col justify-center">
+      {!showLogin && <div className="bg-white/80 p-10 rounded flex flex-col justify-center mb-[400px]">
         <h2 className="text-3xl font-bold text-gray-600">Bem-Vindo</h2>
         <button onClick={()=>{setShowLogin(true)}} className=" bg-gray-600 p-2 px-3 rounded text-base mt-5 font-bold text-white">Fazer Login</button>
       </div>}

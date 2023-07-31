@@ -1,13 +1,13 @@
 'use client'
 
 import { useState } from "react";
-import { FiTrash2, FiExternalLink, FiPrinter, FiCheckCircle } from "react-icons/fi";
+import { FiTrash2, FiExternalLink, FiPrinter, FiCheckCircle, FiDelete } from "react-icons/fi";
 import SelectComponent from "./SelectComponent";
 import ListaDeCategorias from "@/api/ListaDeCategorias";
 import TabelaMaoDeObra from "./TabelaMaoDeObra";
 import TabelaMateriais from "./TabelaMateriais";
 
-export default function CriarOrçamento() {
+export default function CriarOrçamento(props) {
 
   const [listeningMouseClick, setListeningMouseClick] = useState(false)
 
@@ -19,7 +19,8 @@ export default function CriarOrçamento() {
 
   function handleSalvar(e) {
     if( nomeDoCliente !== '' && nifDoCliente !== '' && categoria !== '' && dataDoOrçamento !== '' && descriçaoDoProjeto !== '') {
-      // e.preventDefault()
+      e.preventDefault()
+      props.setShowSection("Orçamentos")
     }
   }
 
@@ -67,6 +68,8 @@ export default function CriarOrçamento() {
               className="bg-orange-400 flex items-center justify-evenly p-2 w-[200px] px-4 rounded shadow text-white">Gerar PDF <FiExternalLink /></a>
 
           <button type="submit" onClick={(e)=>{handleSalvar(e)}} className="bg-green-400 flex items-center justify-evenly w-[200px] ml-10 p-2 px-4 rounded shadow text-white">Salvar <FiCheckCircle /></button>
+
+          <button type="submit" onClick={()=>{props.setShowSection("Orçamentos")}} className="bg-red-400 flex items-center justify-evenly w-[200px] ml-10 p-2 px-4 rounded shadow text-white">Cancelar <FiDelete /></button>
         </div>
 
       </form>
