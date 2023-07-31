@@ -12,9 +12,9 @@ export default function MaoDeObra() {
   const [itemModificado, setItemModificado] = useState(
     {
       id: 0,
-      funçao: "Função",
+      nome: "Função",
       unid: "Unid",
-      preçounid: 0,
+      valor: 0,
       descriçao: "",
     });
 
@@ -36,9 +36,9 @@ export default function MaoDeObra() {
     
     const NewProfissional = {
       id: 0,
-      funçao: "Função",
+      nome: "Função",
       unid: "Unid",
-      preçounid: 0,
+      valor: 0,
       descriçao: "Descrição do item",
     }
 
@@ -49,6 +49,30 @@ export default function MaoDeObra() {
     }
   }
 
+  function handleEditNome(profissional, e) {
+    let Newprofissional = profissional
+    Newprofissional.nome = e.target.value
+    setItemModificado(Newprofissional)
+  }
+
+  function handleEditUnid(profissional, e) {
+    let Newprofissional = profissional
+    Newprofissional.unid = e.target.value
+    setItemModificado(Newprofissional)
+  }
+
+  function handleEditValor(profissional, e) {
+    let Newprofissional = profissional
+    Newprofissional.valor = e.target.value
+    setItemModificado(Newprofissional)
+  }
+
+  function handleEditDescriçao(profissional, e) {
+    let Newprofissional = profissional
+    Newprofissional.descrição = e.target.value
+    setItemModificado(Newprofissional)
+  }
+
   return (
     <div className='p-10 min-w-[80vw]'>
       <h2 className='text-gray-500 border-b-4 font-semibold border-gray-400'>Mão de Obra</h2>
@@ -57,7 +81,7 @@ export default function MaoDeObra() {
         <InputFiltrarLista
           listaOriginal={listaOriginal}
           setLista={setLista}
-          Chave="funçao"
+          Chave="nome"
           PlaceHolder="Buscar Profissional"
         />
 
@@ -90,12 +114,12 @@ export default function MaoDeObra() {
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Função</h4>
-            {lista?.map((profissional) => <input type="text" onChange={(e) => { handleEditNome(profissional, e) }} key={profissional.id} placeholder={profissional.funçao} className={`w-[260px] h-10 mt-3 flex items-center  ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>)}
+            {lista?.map((profissional) => <input type="text" onChange={(e) => { handleEditNome(profissional, e) }} key={profissional.id} placeholder={profissional.nome} className={`w-[260px] h-10 mt-3 flex items-center  ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>)}
           </div>
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Unid</h4>
-            {lista?.map((profissional) => <select key={profissional.id} placeholder={profissional.unid} onChange={() => { setItemModificado(profissional.id) }} className={`w-[100px] h-10 mt-3 flex items-center  ${profissional.id === itemModificado.id ? "text-green-400" : "text-gray-400"}`}>
+            {lista?.map((profissional) => <select key={profissional.id} placeholder={profissional.unid} onChange={(e) => { handleEditUnid(profissional, e) }} className={`w-[100px] h-10 mt-3 flex items-center  ${profissional.id === itemModificado.id ? "text-green-400" : "text-gray-400"}`}>
               <option value={profissional.unid}>{profissional.unid}</option>
               <option value="hr">hr</option>
               <option value="dia">dia</option>
@@ -108,7 +132,7 @@ export default function MaoDeObra() {
             <h4 className="h-10 flex items-center text-gray-600">Preço Unid</h4>
             {lista?.map((profissional) =>
               <div key={profissional.id} className={`flex items-center mt-3 ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}>
-                <input type="number" onChange={() => { setItemModificado(profissional.id) }} placeholder={profissional.preçounid} className={`w-[80px] h-10 flex items-center ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>
+                <input type="number" onChange={(e) => { handleEditValor(profissional, e) }} placeholder={profissional.valor} className={`w-[80px] h-10 flex items-center ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>
                 €
               </div>
             )}
@@ -118,7 +142,7 @@ export default function MaoDeObra() {
             <h4 className="h-10 flex items-center text-gray-600">Descrição</h4>
             {lista?.map((profissional) =>
               <div key={profissional.id} className={`flex items-center mt-3 ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}>
-                <textarea type="text" onChange={() => { setItemModificado(profissional.id) }} placeholder={profissional.descriçao} className={`w-[400px] h-10 text-sm flex items-center ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></textarea>
+                <textarea type="text" onChange={(e) => { handleEditDescriçao(profissional, e) }} placeholder={profissional.descriçao} className={`w-[400px] h-10 text-sm flex items-center ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></textarea>
               </div>
             )}
           </div>
@@ -127,6 +151,8 @@ export default function MaoDeObra() {
             <h4 className="h-10 flex items-center text-gray-600"></h4>
             {lista?.map((profissional) => <ButtonSalvar
               key={profissional.id}
+              listaOriginal={listaOriginal}
+              setListaOriginal={setListaOriginal}
               itemModificado={itemModificado}
               setItemModificado={setItemModificado}
               item={profissional} />)}
