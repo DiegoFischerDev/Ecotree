@@ -20,6 +20,7 @@ export default function MaoDeObra() {
 
   const [listaOriginal, setListaOriginal] = useState(ListaDeMaoDeObra)
   const [lista, setLista] = useState(ListaDeMaoDeObra)
+  const [isEditing, setIsEditing] = useState(null)
 
   useEffect(() => {
     setLista(listaOriginal)
@@ -31,43 +32,53 @@ export default function MaoDeObra() {
     setItemModificado(NewProfissional)
   }
 
-  
-  function handleAdicionarProfissional() {
-    
-    const NewProfissional = {
-      id: 0,
-      nome: "Função",
-      unid: "Unid",
-      valor: 0,
-      descriçao: "Descrição do item",
-    }
 
-    if (listaOriginal[0].id !== 0) {
-      let novaLista = [...listaOriginal];
-      novaLista.unshift(NewProfissional);
-      setListaOriginal(novaLista);
+  function handleAdicionarProfissional() {
+    if (isEditing === null) {
+
+      setIsEditing(0)
+
+      const NewProfissional = {
+        id: 0,
+        nome: "Função",
+        unid: "Unid",
+        valor: 0,
+        descriçao: "Descrição do item",
+      }
+
+      if (listaOriginal[0].id !== 0) {
+        let novaLista = [...listaOriginal];
+        novaLista.unshift(NewProfissional);
+        setListaOriginal(novaLista);
+      }
+    } else {
+      alert("Salve as alterações pendentes antes de iniciar outra.")
     }
   }
 
   function handleEditNome(profissional, e) {
+    setIsEditing(profissional.id)
     let Newprofissional = profissional
     Newprofissional.nome = e.target.value
     setItemModificado(Newprofissional)
   }
 
   function handleEditUnid(profissional, e) {
+    setIsEditing(profissional.id)
     let Newprofissional = profissional
     Newprofissional.unid = e.target.value
     setItemModificado(Newprofissional)
   }
 
   function handleEditValor(profissional, e) {
+    setIsEditing(profissional.id)
     let Newprofissional = profissional
     Newprofissional.valor = e.target.value
     setItemModificado(Newprofissional)
   }
 
   function handleEditDescriçao(profissional, e) {
+    setIsEditing(profissional.id)
     let Newprofissional = profissional
     Newprofissional.descrição = e.target.value
     setItemModificado(Newprofissional)
@@ -103,23 +114,26 @@ export default function MaoDeObra() {
                   id={profissional.id}
                   list={listaOriginal}
                   setList={setListaOriginal}
+                  setIsEditing={setIsEditing}
+                  isEditing={isEditing}
+                  setItemModificado={setItemModificado}
                 />
               </div>)}
           </div>
 
-          <div className='mx-5 p-2 text-xl'>
+          {/* <div className='mx-5 p-2 text-xl'>
             <h4 className="h-10 flex items-center justify-center">id</h4>
             {lista?.map((profissional) => <h4 key={profissional.id} className="h-10 text-gray-400 mt-3 flex items-center justify-center">{profissional.id}</h4>)}
-          </div>
+          </div> */}
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Função</h4>
-            {lista?.map((profissional) => <input type="text" onChange={(e) => { handleEditNome(profissional, e) }} key={profissional.id} placeholder={profissional.nome} className={`w-[260px] h-10 mt-3 flex items-center  ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>)}
+            {lista?.map((profissional) => <input disabled={isEditing === null || isEditing === profissional.id ? false : true} type="text" onChange={(e) => { handleEditNome(profissional, e) }} key={profissional.id} placeholder={profissional.nome} className={`w-[260px] h-10 mt-3 flex items-center  ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>)}
           </div>
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600">Unid</h4>
-            {lista?.map((profissional) => <select key={profissional.id} placeholder={profissional.unid} onChange={(e) => { handleEditUnid(profissional, e) }} className={`w-[100px] h-10 mt-3 flex items-center  ${profissional.id === itemModificado.id ? "text-green-400" : "text-gray-400"}`}>
+            {lista?.map((profissional) => <select disabled={isEditing === null || isEditing === profissional.id ? false : true} key={profissional.id} placeholder={profissional.unid} onChange={(e) => { handleEditUnid(profissional, e) }} className={`w-[100px] h-10 mt-3 flex items-center  ${profissional.id === itemModificado.id ? "text-green-400" : "text-gray-400"}`}>
               <option value={profissional.unid}>{profissional.unid}</option>
               <option value="hr">hr</option>
               <option value="dia">dia</option>
@@ -132,7 +146,7 @@ export default function MaoDeObra() {
             <h4 className="h-10 flex items-center text-gray-600">Preço Unid</h4>
             {lista?.map((profissional) =>
               <div key={profissional.id} className={`flex items-center mt-3 ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}>
-                <input type="number" onChange={(e) => { handleEditValor(profissional, e) }} placeholder={profissional.valor} className={`w-[80px] h-10 flex items-center ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>
+                <input disabled={isEditing === null || isEditing === profissional.id ? false : true} type="number" onChange={(e) => { handleEditValor(profissional, e) }} placeholder={profissional.valor} className={`w-[80px] h-10 flex items-center ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></input>
                 €
               </div>
             )}
@@ -142,7 +156,7 @@ export default function MaoDeObra() {
             <h4 className="h-10 flex items-center text-gray-600">Descrição</h4>
             {lista?.map((profissional) =>
               <div key={profissional.id} className={`flex items-center mt-3 ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}>
-                <textarea type="text" onChange={(e) => { handleEditDescriçao(profissional, e) }} placeholder={profissional.descriçao} className={`w-[400px] h-10 text-sm flex items-center ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></textarea>
+                <textarea disabled={isEditing === null || isEditing === profissional.id ? false : true} type="text" onChange={(e) => { handleEditDescriçao(profissional, e) }} placeholder={profissional.descriçao} className={`w-[400px] h-10 text-sm flex items-center ${profissional.id === itemModificado.id ? "text-green-400 placeholder-green-400" : "text-gray-400 placeholder-gray-400"}`}></textarea>
               </div>
             )}
           </div>
@@ -155,6 +169,7 @@ export default function MaoDeObra() {
               setListaOriginal={setListaOriginal}
               itemModificado={itemModificado}
               setItemModificado={setItemModificado}
+              setIsEditing={setIsEditing}
               item={profissional} />)}
           </div>
 

@@ -52,10 +52,10 @@ export default function Orçamentos(props) {
               </div>)}
           </div>
 
-          <div className='mx-5 p-2 text-xl'>
+          {/* <div className='mx-5 p-2 text-xl'>
             <h4 className="h-10 flex items-center justify-center font-semibold">id</h4>
             {lista?.map((orçamento) => <h4 key={orçamento.id} className="h-10 text-gray-500 mt-3 flex items-center justify-center">{orçamento.id}</h4>)}
-          </div>
+          </div> */}
 
           <div className='mx-5 py-2 text-xl'>
             <h4 className="h-10 flex items-center text-gray-600 font-semibold">Cliente</h4>

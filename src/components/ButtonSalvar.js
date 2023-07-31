@@ -1,13 +1,19 @@
 
 
-export default function ButtonSalvar({listaOriginal, setListaOriginal, itemModificado, setItemModificado, item}) {
+export default function ButtonSalvar({listaOriginal, setListaOriginal, itemModificado, setItemModificado, setIsEditing, item}) {
 
   function handleSalvar(){
 
-    if(item.id !== 0 && item.id === itemModificado.id){
+    if(item.id !== 0){
 
       let novaLista = [...listaOriginal]
-      novaLista.splice(item.id-1, 1, itemModificado);
+
+      for (let i = 0; i < novaLista.length; i++){
+        if (novaLista[i].id === item.id){
+          novaLista.splice(i, 1, itemModificado);
+        }
+      }
+      
       setListaOriginal(novaLista)
   
       setItemModificado({
@@ -17,15 +23,15 @@ export default function ButtonSalvar({listaOriginal, setListaOriginal, itemModif
         valor: 0,
         descrição: "Descrição do item",
       })
+
+      setIsEditing(null)
     }
 
-    if(item.id === 0 && item.nome !== 'Nome' && item.unid !== 'Unid' && item.valor !== 0){
+    if(item.id === 0){
 
       let novaLista = [...listaOriginal]
-      novaLista.splice(item.id, 1, itemModificado);
-      novaLista.map((item)=>{
-        item.id = item.id+1
-      })
+      novaLista.splice(0, 1, itemModificado)
+      novaLista[0].id = Math.floor(Math.random() * 10000)
       setListaOriginal(novaLista)
   
       setItemModificado({
@@ -35,6 +41,8 @@ export default function ButtonSalvar({listaOriginal, setListaOriginal, itemModif
         valor: 0,
         descrição: "Descrição do item",
       })
+
+      setIsEditing(null)
     }
 
 
