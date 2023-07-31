@@ -6,7 +6,7 @@ import { FiZoomIn, FiTrash2, FiPrinter, FiSearch, FiEdit } from "react-icons/fi"
 import InputFiltrarLista from "./InputFiltrarLista";
 import DeleteItem from "./DeleteItem";
 
-export default function Orçamentos(props) {
+export default function Orçamentos({setShowSection}) {
 
   const [listaOriginal, setListaOriginal] = useState(ListaDeOrçamentos)
   const [lista, setLista] = useState(ListaDeOrçamentos)
@@ -28,7 +28,7 @@ export default function Orçamentos(props) {
         PlaceHolder="Buscar Orçamento"
         />
 
-        <button onClick={()=>{props.setShowSection("Criar Orçamento")}} className="p-2 px-4 mb-3 ml-5 text-lg bg-green-400 h-10 mt-3 flex items-center justify-center text-white rounded">Criar Orçamento</button>
+        <button onClick={()=>{setShowSection("Criar Orçamento")}} className="p-2 px-4 mb-3 ml-5 text-lg bg-green-400 h-10 mt-3 flex items-center justify-center text-white rounded">Criar Orçamento</button>
       </div>
 
       <div className='rounded border mt-10'>

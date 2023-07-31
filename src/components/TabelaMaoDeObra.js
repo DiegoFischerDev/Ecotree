@@ -52,7 +52,6 @@ export default function TabelaMaoDeObra({ listeningMouseClick, setListeningMouse
       })
       setListaDeMaoDeObraDoOrçamento(novaLista)
       resetStates()
-
     }
   }
 
@@ -128,9 +127,25 @@ export default function TabelaMaoDeObra({ listeningMouseClick, setListeningMouse
         <div className="flex items-center ml-[10px] mt-8">
           <button type="button" onClick={() => { handleAdicionarMaoDeObra() }} className="p-2 w-[70px] mb-3 ml-5 text-lg bg-green-400 h-10 mt-3 flex items-center justify-center text-white rounded">Add</button>
 
-          <SelectComponent options={listaDeProfissoes} placeholder="nome" value={novoProfissional} setValue={setNovoProfissional} listeningMouseClick={listeningMouseClick} setListeningMouseClick={setListeningMouseClick} className="text-green-400 ml-5 w-[230px]" />
+          <SelectComponent
+          placeholder="nome"
+          options={listaDeProfissoes}
+          value={novoProfissional}
+          setValue={setNovoProfissional}
+          listeningMouseClick={listeningMouseClick}
+          setListeningMouseClick={setListeningMouseClick}
+          className="text-green-400 ml-5 w-[230px]"
+          />
 
-          <SelectComponent options={listaDeUnidades} placeholder="Unid" value={novoUnidade} setValue={setNovoUnidade} listeningMouseClick={listeningMouseClick} setListeningMouseClick={setListeningMouseClick} className="text-green-400 ml-3 w-[120px]" />
+          <SelectComponent
+          placeholder="Unid"
+          options={listaDeUnidades}
+          value={novoUnidade}
+          setValue={setNovoUnidade}
+          listeningMouseClick={listeningMouseClick}
+          setListeningMouseClick={setListeningMouseClick}
+          className="text-green-400 ml-3 w-[120px]"
+          />
 
           <div className="relative">
             <input type="number" value={novoPreço} onChange={(e) => { setNovoPreço(e.target.value) }} placeholder="Preço Unid" className="p-2 text-lg border ml-3 w-[130px] text-green-400 text-center" />

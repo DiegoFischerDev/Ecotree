@@ -16,6 +16,13 @@ import MaoDeObra from "@/components/MãoDeObra"
 export default function Application() {
 
   const [showSection, setShowSection] = useState('Dashboard');
+  const [dadosOrçamento, setDadosOrçamento] = useState({
+    nomeDoCliente: '',
+    nifDoCliente: '',
+    categoria: '',
+    dataDoOrçamento: '',
+    descriçaoDoProjeto: '',
+  });
 
   return (
     <section className="flex text-2xl">
