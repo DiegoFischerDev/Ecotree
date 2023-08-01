@@ -16,6 +16,7 @@ import MaoDeObra from "@/components/MãoDeObra"
 export default function Application() {
 
   const [showSection, setShowSection] = useState('Dashboard');
+  const [orçamento, setOrçamento] = useState({});
 
   return (
     <section className="flex text-2xl">
@@ -66,8 +67,8 @@ export default function Application() {
 
       <div className="">
         {showSection === "Dashboard" && <Dashboard />}
-        {showSection === "Criar Orçamento" && <CriarOrçamento setShowSection={setShowSection}/>}
-        {showSection === "Orçamentos" && <Orçamentos setShowSection={setShowSection}/>}
+        {showSection === "Criar Orçamento" && <CriarOrçamento setShowSection={setShowSection} orçamento={orçamento} setOrçamento={setOrçamento}/>}
+        {showSection === "Orçamentos" && <Orçamentos setShowSection={setShowSection} setOrçamento={setOrçamento}/>}
         {showSection === "Materiais" && <Materiais />}
         {showSection === "Mão de Obra" && <MaoDeObra />}
         {/* {showSection === "Menu 5" && "Menu 5"}

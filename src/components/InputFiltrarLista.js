@@ -23,9 +23,9 @@ export default function InputFiltrarLista({listaOriginal, setLista, Chave, Place
   };
 
   return (
-    <div className="relative">
+    <div className="relative border border-gray-600">
       <FiSearch color="gray" className="absolute top-[10px] left-[10px]" />
-      <input type="text" placeholder={PlaceHolder} value={inputDigitado} onChange={(e)=>{setInputDigitado(e.target.value)}} className="bg-zinc-100 border p-2 pl-12 text-lg text-gray-600"></input>
+      <input type="text" placeholder={PlaceHolder} value={inputDigitado} onChange={(e)=>{setInputDigitado(e.target.value)}} className="bg-zinc-200 border p-2 pl-12 text-lg text-gray-600"></input>
     </div>
   );
 }

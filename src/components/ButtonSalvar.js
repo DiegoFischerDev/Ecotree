@@ -49,6 +49,6 @@ export default function ButtonSalvar({listaOriginal, setListaOriginal, itemModif
   }
 
  return (
-  <button onClick={handleSalvar} key={item.id} className={`w-[100px] ${item.id === itemModificado.id ? "bg-green-400" : "bg-gray-400"} h-10 mt-3 flex items-center justify-center text-white rounded`}>Salvar</button>
+  <button disabled={item.id === itemModificado.id ? false : true} onClick={handleSalvar} key={item.id} className={`w-[100px] ${item.id === itemModificado.id ? "bg-green-400" : "bg-gray-400"} h-10 mt-3 flex items-center justify-center text-white rounded`}>Salvar</button>
  );
 }
