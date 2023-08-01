@@ -27,6 +27,8 @@ export default function LoginForm() {
         <p className="text-sm text-white">Login</p>
       </div>
 
+      <p className="mt-5 text-sm text-red-600 font-semibold">( Utilize qualquer Usuário e Senha para entrar )</p>
+
 
       <div className="mt-8 w-[90%] rounded text-lg flex items-center relative">
         <FiUser color="white" className="absolute left-3" />

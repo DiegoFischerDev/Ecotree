@@ -37,11 +37,11 @@ export default function SelectComponent({
   return (
     <div className={className}>
       <div className=''>
-        <input type='text' onClick={()=>{setListeningMouseClick(true); setOpen(true); FiltrarLista()}} value={value} placeholder={placeholder} onChange={(e) => { setValue(e.target.value); setOpen(true); FiltrarLista() }} className='border p-2 text-lg w-full text-center' />
+        <input type='text' onClick={()=>{setListeningMouseClick(true); setOpen(true); FiltrarLista()}} value={value} placeholder={placeholder} onChange={(e) => { setValue(e.target.value); setOpen(true); FiltrarLista() }} className='border p-2 text-base w-full text-start' />
       </div>
 
       <div className='relative'>
-        {open && <ul className='bg-gray-100 p-2 text-lg absolute top-0 left-0 z-10 border'>
+        {open && <ul className='bg-gray-100 p-2 text-base absolute top-0 left-0 z-10 border'>
           {lista.map((item, index)=><li key={index} onClick={()=>{setValue(item)}} className='cursor-pointer text-gray-500'>{item}</li>)}
         </ul>}
       </div>
