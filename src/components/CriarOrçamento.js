@@ -27,7 +27,7 @@ export default function CriarOrçamento({setShowSection, orçamento}) {
   }
 
   return (
-    <div className='p-5 w-[85vw] pb-[500px]' onClick={() => { if (listeningMouseClick) { setListeningMouseClick(false) } }}>
+    <div className='p-5 w-[85vw] min-w-[1200px] pb-[500px]' onClick={() => { if (listeningMouseClick) { setListeningMouseClick(false) } }}>
 
       <h2 className='text-gray-500 border-b-4 font-semibold border-gray-500'>Criar Orçamento</h2>
 
@@ -46,7 +46,7 @@ export default function CriarOrçamento({setShowSection, orçamento}) {
 
           <div className='flex flex-col ml-12'>
             <label className="text-sm text-gray-600">Categoria</label>
-            <SelectComponent options={ListaDeCategorias} placeholder="Categoria" value={categoria} setValue={setCategoria} listeningMouseClick={listeningMouseClick} setListeningMouseClick={setListeningMouseClick} className="text-gray-600 border border-gray-600" />
+            <SelectComponent options={ListaDeCategorias} placeholder="Categoria" value={categoria} setValue={setCategoria} listeningMouseClick={listeningMouseClick} setListeningMouseClick={setListeningMouseClick} className="text-gray-600 border" />
           </div>
 
           <div className="flex flex-col ml-12">
