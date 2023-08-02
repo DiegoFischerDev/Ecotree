@@ -130,26 +130,26 @@ export default function TabelaMateriais({ listeningMouseClick, setListeningMouse
           <SelectComponent options={listaDeUnidades} placeholder="Unid" value={novoUnidade} setValue={setNovoUnidade} listeningMouseClick={listeningMouseClick} setListeningMouseClick={setListeningMouseClick} className="text-green-400 ml-3 w-[100px]" />
 
           <div className="relative">
-            <input type="number" value={novoPreço} onChange={(e) => { setNovoPreço(e.target.value) }} placeholder="Preço Unid" className="p-2 text-base border ml-3 w-[110px] text-green-400 text-center" />
+            <input type="number" value={novoPreço} onChange={(e) => { setNovoPreço(e.target.value) }} placeholder="Preço Unid" className="p-2 text-base border border-gray-600 ml-3 w-[110px] text-green-400 text-center" />
             <label className="text-[15px] absolute right-2 -bottom-2 text-green-400">€</label>
           </div>
 
           <div className="relative">
-            <input type="number" value={novoQuantidade} onChange={(e) => { setNovoQuantidade(e.target.value) }} placeholder="Quantidade" className="p-2 text-base border ml-3 w-[120px] text-green-400 text-center" />
+            <input type="number" value={novoQuantidade} onChange={(e) => { setNovoQuantidade(e.target.value) }} placeholder="Quantidade" className="p-2 text-base border border-gray-600 ml-3 w-[120px] text-green-400 text-center" />
             <label className="text-[15px] absolute right-2 -bottom-2 text-green-400">{novoUnidade}</label>
           </div>
 
           <div className="relative">
-            <input type="number" value={novoMargem} onChange={(e) => { setNovoMargem(e.target.value) }} placeholder="Margem" className={`p-2 text-base border ml-3 w-[90px]  ${novoMargem !== 0 ? "text-green-400" : "text-gray-400"} text-center`} />
+            <input type="number" value={novoMargem} onChange={(e) => { setNovoMargem(e.target.value) }} placeholder="Margem" className={`p-2 text-base border border-gray-600 ml-3 w-[90px]  ${novoMargem !== 0 ? "text-green-400" : "text-gray-400"} text-center`} />
             <label className="text-[15px] absolute right-2 -bottom-2 text-green-400">%</label>
           </div>
 
           <div className="relative">
-            <input type="number" value={novoValorTotal} onChange={(e) => { setNovoValorTotal(e.target.value) }} placeholder={novoValorTotal} className={`p-2 text-base border ml-3 w-[110px] ${novoValorTotal !== 0 ? "text-green-400" : "text-gray-400"} text-center`} />
+            <input type="number" value={novoValorTotal} onChange={(e) => { setNovoValorTotal(e.target.value) }} placeholder={novoValorTotal} className={`p-2 text-base border border-gray-600 ml-3 w-[110px] ${novoValorTotal !== 0 ? "text-green-400" : "text-gray-400"} text-center`} />
             <label className="text-[15px] absolute right-2 -bottom-2 text-green-400">€</label>
           </div>
 
-          <textarea type="text" value={novoDescriçao} onChange={(e) => { setNovoDescriçao(e.target.value) }} placeholder="Descrição" className="p-2 text-sm border ml-3 w-[370px] h-[42px] text-green-400 text-start" />
+          <textarea type="text" value={novoDescriçao} onChange={(e) => { setNovoDescriçao(e.target.value) }} placeholder="Descrição" className="p-2 text-sm border border-gray-600 ml-3 w-[370px] h-[42px] text-green-400 text-start" />
 
         </div>
 

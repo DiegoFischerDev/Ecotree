@@ -37,7 +37,7 @@ export default function SelectComponent({
   return (
     <div className={className}>
       <div className=''>
-        <input type='text' onClick={()=>{setListeningMouseClick(true); setOpen(true); FiltrarLista()}} value={value} placeholder={placeholder} onChange={(e) => { setValue(e.target.value); setOpen(true); FiltrarLista() }} className='border p-2 text-base w-full text-start' />
+        <input type='text' onClick={()=>{setListeningMouseClick(true); setOpen(true); FiltrarLista()}} value={value} placeholder={placeholder} onChange={(e) => { setValue(e.target.value); setOpen(true); FiltrarLista() }} className='border border-gray-600 p-2 text-base w-full text-start' />
       </div>
 
       <div className='relative'>
