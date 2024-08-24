@@ -12,6 +12,7 @@ import CriarOrçamento from "@/components/CriarOrçamento"
 import Orçamentos from "@/components/Orçamentos"
 import Materiais from "@/components/Materiais"
 import MaoDeObra from "@/components/MãoDeObra"
+import EstacioLogo from "../../assets/estacio-logo.jpg";
 
 export default function Application() {
 
@@ -37,7 +38,7 @@ export default function Application() {
             />
 
             <h2 className="text-white text-sm">Administrador</h2>
-            <h2 className="text-white text-sm">admin@ecotree.pt</h2>
+            <h2 className="text-white text-sm">admin@estacio.com.br</h2>
             <LogoutButton />
           </div>
 
@@ -51,17 +52,19 @@ export default function Application() {
           </ul>
         </div>
 
-        <div className="text-xs text-gray-400 p-5 relative flex justify-center flex-col items-center">
+        <div className="text-xs text-gray-400 p-5 mb-10 relative flex justify-center flex-col items-center">
           <Image
-            src={logo}
-            alt='Engineering logo'
+            src={EstacioLogo}
+            alt='Estacio logo'
             width={500}
             height={500}
             className='w-[140px]'
             priority={true}
           />
-          <h2 className="absolute top-28 left-[58px] bg-slate-500 text-lg text-white">Ecotree</h2>
-          <span>Versão 1.0</span><span>Ecotree &copy; 2023</span>
+          <span className="mt-4">Versão 1.0</span>
+          <span>Diego Fischer</span>
+          <span>Trabalho de Extensão</span>
+          <span>Estacio</span>
         </div>
       </div>
 

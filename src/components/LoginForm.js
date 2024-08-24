@@ -65,7 +65,7 @@ export default function LoginForm() {
           <FiLock color="orange" size={15} className="" />
           <p className="text-xs pl-1">Redefinir Senha</p>
         </a>
-        <p className="text-xs">Contacto: geral@ecotree.pt</p>
+        <h3 className="text-lg">user@estacio.com.br</h3>
       </div>
 
     </form>
