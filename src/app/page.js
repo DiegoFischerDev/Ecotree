@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import LoginForm from "@/components/LoginForm";
-import BgImage from "../assets/EcoHouseBg2.jpg";
+import BgImage from "../assets/bg-estacio.png";
 import EstacioLogo from "../assets/estacio-logo.jpg";
 import { useState } from "react";
 
